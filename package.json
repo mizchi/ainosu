@@ -23,6 +23,7 @@
     "lovefield": "^2.1.12",
     "require-yaml": "^0.0.1"
   },
+  "files": ["lib"],
   "ava": {
     "babel": "inherit",
     "files": [
