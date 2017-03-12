@@ -1,0 +1,12 @@
+name: mydb
+version: 1
+table:
+  Item:
+    properties:
+      title: string
+      body: string
+      createdAt: number
+      updatedAt: number
+    index:
+      createdAt:
+        unique: false

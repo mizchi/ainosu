@@ -1,0 +1,20 @@
+/* @flow */
+import type {Table, Database} from "lovefield";
+
+declare class Store<T> {
+  constructor(db: Database, tableName: string): Store<T>;
+  getTable(): Table;
+  all(): Promise<T[]>;
+  where(op: any): Promise<T[]>;
+  findBy(prop: $Keys<T>, value: any): Promise<T[]>;
+  find(id: string | number): Promise<T>;
+  insert(t: T | $Diff<T, {id: any}> | T[] | ($Diff<T, {id: any}>)[]): Promise<number>;
+  update(t: T | T[]): Promise<number>;
+  delete(value: any): Promise<void>;
+  deleteWhere(op: any): Promise<void>;
+}
+
+declare module.exports: {
+  Store: typeof Store;
+  loadSchema: any;
+};

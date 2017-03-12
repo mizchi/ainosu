@@ -1,0 +1,38 @@
+{
+  "name": "@mizchi/ainosu",
+  "version": "0.1.0",
+  "description": "Typesafe lovefield wrapper",
+  "main": "lib",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "babel src -d lib"
+  },
+  "peerDependencies": {
+    "lovefield": "*"
+  },
+  "author": "mizchi",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.18.2",
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-latest": "^6.22.0",
+    "babel-register": "^6.23.0",
+    "lovefield": "^2.1.12",
+    "require-yaml": "^0.0.1"
+  },
+  "ava": {
+    "babel": "inherit",
+    "files": [
+      "src/**/*.test.js"
+    ],
+    "require": [
+      "babel-polyfill",
+      "babel-register",
+      "require-yaml",
+      "./src/__test__/helper"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+[ignore]
+
+[include]
+
+[libs]
+./src/__test__/decls
+
+[options]
+module.file_ext=.yml
