@@ -1,6 +1,6 @@
 {
   "name": "@mizchi/ainosu",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Typesafe lovefield wrapper",
   "main": "lib",
   "scripts": {
