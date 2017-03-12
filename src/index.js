@@ -38,26 +38,29 @@ export class Store<T> {
       .exec()
   }
 
-  async find (value: number): Promise<T> {
+  find (value: number): Promise<T> {
     const id: any = 'id'
-    const items = await this.findBy(id, value)
-    return items[0]
+    return this.findBy(id, value).then(item => {
+      return items[0]
+    })
   }
 
-  async insert (t) {
+  insert (t) {
     const isArray = t instanceof Array
-    const ret = await this._db.insert().into(this._table).values(
+    return this._db.insert().into(this._table).values(
       isArray ? t.map(i => this._table.createRow(i)) : [this._table.createRow(t)]
-    ).exec()
-    return isArray ? ret.map(i => i.id) : ret[0].id
+    ).exec().then(ret => {
+      return isArray ? ret.map(i => i.id) : ret[0].id
+    })
   }
 
-  async update (t) {
+  update (t) {
     const isArray = t instanceof Array
-    const ret = await this._db.insertOrReplace().into(this._table).values(
+    return this._db.insertOrReplace().into(this._table).values(
       isArray ? t.map(i => this._table.createRow(i)) : [this._table.createRow(t)]
-    ).exec()
-    return isArray ? ret : ret[0]
+    ).exec().then(ret => {
+      return isArray ? ret.map(i => i.id) : ret[0].id
+    })
   }
 
   delete (value: number): Promise<void> {
